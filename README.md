@@ -1,0 +1,77 @@
+## Install Rust
+
+For an introduction to Rust, see the excellent Rust [book](https://doc.rust-lang.org/book/).
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+rustup component add rustfmt
+```
+
+## Install Solana
+
+See the solana [docs](https://docs.solana.com/cli/install-solana-cli-tools) for installation instructions. On macOS and
+Linux,
+
+```bash
+sh -c "$(curl -sSfL https://release.solana.com/v1.7.1/install)"
+```
+
+## Install Mocha
+
+Program integration tests are run using [Mocha](https://mochajs.org/).
+
+```bash
+npm install -g mocha
+```
+
+## Install Anchor
+
+For now, we can use Cargo to install the CLI.
+
+```bash
+cargo install --git https://github.com/project-serum/anchor --tag v0.14.0 anchor-cli --locked
+```
+
+On Linux systems you may need to install additional dependencies if `cargo install` fails. On Ubuntu,
+
+```bash
+sudo apt-get update && sudo apt-get upgrade && sudo apt-get install -y pkg-config build-essential libudev-dev
+```
+
+To install the JavaScript package.
+
+```bash
+npm install -g @project-serum/anchor
+npm install
+```
+
+Make sure your `NODE_PATH` is set properly so that globally installed modules can be resolved.
+
+## Minimum version requirements
+
+| Build tool  | Version        |
+|:------------|:---------------|
+| Node.js     | v11.0.0        |
+
+## for build smart contract
+
+```bash
+anchor build
+```
+
+## for deploy smart contract
+
+define network in Anchor.toml
+
+```bash
+anchor deploy
+```
+
+## for test smart contract
+
+it run test case for deployed smart contract
+
+```bash
+mocha tests
+```
